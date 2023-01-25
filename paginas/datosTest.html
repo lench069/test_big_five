@@ -31,19 +31,19 @@
 
             <div class="widget-body">
                 <div class="widget-main no-padding">
-                    <form class="form-horizontal" role="form" ng-submit="siguiente()"> 
+                    <form class="form-horizontal" role="form" ng-submit="siguiente()">
                         <!-- <legend>Form</legend> -->
                         <fieldset>
-                            <h4 class="center"><bold>PLANTILLA DE CORRECCION DEL MCMI-III</bold></h4>
-                            <h5 class="center"><bold>EDICION  2011</bold></h5>
+                            <h3 class="center"><strong>BFQ</strong></h3>
+                            <h4 class="center"><strong>CUESTIONARIO “BIG FIVE”</strong></h4>
                             <br>
 
-                            <div class="form-group center" >
+                            <!--<div class="form-group center" >
                                 <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idnickt" > NickName: </label>
                                 <div class="col-md-7 col-sm-6 col-xs-10">
                                     <input type="text" id="idnickt"  ng-model="nickT" placeholder="NickName" disabled  required class="col-md-7 col-xs-12" maxlength="3" required/>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="form-group center" >
                                 <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idcedulat" > Cedula: </label>
                                 <div class="col-md-7 col-sm-6 col-xs-10">
@@ -58,7 +58,7 @@
                             </div>
 
                             <div class=" form-group ">
-                                <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idc"> Genero: </label>
+                                <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="generoT"> Genero: </label>
                                 <div class="radio col-md-4 col-sm-4 col-xs-12">
                                     <label>
                                         <input name="generoT" id="generoT" ng-model="generoT" type="radio" class="ace" value='F' required/>
@@ -76,24 +76,21 @@
                                 <div class="col-md-7 col-sm-6 col-xs-10">
                                     <input type="number" id="edad" step="1" ng-model="edadT" placeholder="Edad" required class="col-md-7 col-xs-12" required/>
                                 </div>
-                            </div>      
-                              <div class=" form-group ">
-                                <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idc"> Tiempo de enfermedad: </label>
-                                <div class="radio col-md-4 col-sm-4 col-xs-12">
-                                    <label>
-                                        <input name="enferT" id="enferT" type="radio" ng-model="enferT"  class="ace" value="Menos de 1 semana" required/>
-                                        <span class="lbl"> Menos de 1 semana</span>
-                                    </label>
-                                    <label>
-                                        <input  name="enferT" id="enferT" type="radio" ng-model="enferT" class="ace" value="De 1 a 4 semanas" required/>
-                                        <span class="lbl"> De 1 a 4 semanas</span>
-                                    </label>
-                                    <label>
-                                        <input  name="enferT" id="enferT" type="radio" ng-model="enferT" class="ace" value="Mas de 4 semanas" required/>
-                                        <span class="lbl"> Mas de 4 semanas</span>
-                                    </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="edad"> Ocupacion:</label>
+
+                                <div class="col-md-7 col-sm-6 col-xs-10">
+                                    <input type="text" id="ocupacion" step="1" ng-model="ocupacionT" placeholder="Ocupacion" required class="col-md-7 col-xs-12" required/>
                                 </div>
-                              </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="edad"> Grado:</label>
+
+                                <div class="col-md-7 col-sm-6 col-xs-10">
+                                    <input type="text" id="grado" step="1" ng-model="gradoT" placeholder="Grado" required class="col-md-7 col-xs-12" required/>
+                                </div>
+                            </div>
 
                         </fieldset>
 <!--ng-click="navegacion('/testForm')"-->

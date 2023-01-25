@@ -834,9 +834,9 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
         $scope.cedulaT='';
         $scope.generoT='';
         $scope.edadT=18;
-        $scope.enferT='';
-     
-
+        $scope.nombreT = $scope.usuarioLogin.NOMBRES + ' ' + $scope.usuarioLogin.APELLIDOS;
+        $scope.ocupacionT='';
+        $scope.gradoT='';
     }
 
     $scope.registrarDatosResultado=function(data){
@@ -1080,7 +1080,11 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
          });
     }
 
-     $scope.siguiente=function(){  
+    $scope.siguiente1=function(){
+        $scope.navegacion ("/testForm");
+    }
+
+        $scope.siguiente=function(){
 
         var f = new Date();
         window.localStorage["datosTestForm"]= JSON.stringify({nickT:$scope.nickT,
@@ -1088,7 +1092,8 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
             nombreT:$scope.nombreT,
             generoT:$scope.generoT,
             edadT: $scope.edadT,
-            enferT:$scope.enferT,
+            ocupacion:$scope.ocupacionT,
+            grado:$scope.gradoT,
             fecha:f.getFullYear()+'-'+(f.getMonth()+1)+'-'+f.getDate()+' '+f.getHours()+":"+f.getMinutes()+":"+f.getSeconds()});
 
             $http({
@@ -1106,7 +1111,7 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
                 {
                     if(parseInt(response.data[0].NUM_PRUEBAS) >= 1)
                     {
-                        $scope.navegacion ("/testForm");
+                        $scope.navegacion ("/instrucciones");
                     }else{
                         $scope.inhabilitarUsuario();
                         swal("Warning!", "El usuario se encuenta deshabilitado, solicite al administrador que lo active!", "warning");

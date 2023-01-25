@@ -14,6 +14,7 @@ app.config (function($routeProvider ,$provide){
     $routeProvider.when("/testForm",{templateUrl:"paginas/test.html", controller:'testController'});
     $routeProvider.when("/resultado",{templateUrl:"paginas/resultado.html", controller:'testController'});
     $routeProvider.when("/modificarUsuario",{templateUrl:"paginas/modificarUsuario.html", controller:'usuariosController'});
+    $routeProvider.when("/instrucciones",{templateUrl:"paginas/instruccionesTest.html", controller:'testController'});
 
     
    });
