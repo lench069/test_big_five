@@ -39,14 +39,9 @@
                                 <div class=" form-group ">
                                     <div class="col-md-1 center"><b>{{x.ID_PREGUNTA}}.</b></div>
                                     <label class="col-md-9 col-sm-9 col-xs-12" for="{{x.ID_PREGUNTA}}"> <b> {{x.DESCRIPCION}} </b></label>
-                                    <div class="radio col-md-2 col-sm-2 col-xs-12">
+                                    <div class="col-md-1">
                                         <label>
-                                            <input name="{{x.ID_PREGUNTA}}" id="{{x.ID_PREGUNTA}}" type="radio" class="ace" value="1" />
-                                            <span class="lbl"> V</span>
-                                        </label>
-                                        <label>
-                                            <input name="{{x.ID_PREGUNTA}}" id="{{x.ID_PREGUNTA}}" type="radio" class="ace" value="0" />
-                                            <span class="lbl"> F</span>
+                                            <input name="{{x.ID_PREGUNTA}}" id="{{x.ID_PREGUNTA}}" type="number" style="width: 50px;" value="5" min="0" max="5"/>
                                         </label>
                                     </div>
                                 </div>
