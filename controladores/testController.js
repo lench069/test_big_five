@@ -80,7 +80,6 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
         $scope.Perseverancia.push($scope.respuestas[13].resp + $scope.respuestas[37].resp + $scope.respuestas[53].resp +
             $scope.respuestas[84].resp + $scope.respuestas[106].resp + $scope.respuestas[124].resp);
         $scope.Perseverancia.push($scope.Perseverancia[1] - $scope.Perseverancia[2]);
-        $scope.Perseverancia.push($scope.Perseverancia[3] + 36);
         //Control de emociones
         $scope.Control_de_emociones.push("Control de emociones");
         $scope.Control_de_emociones.push($scope.respuestas[7].resp + $scope.respuestas[26].resp + $scope.respuestas[49].resp +
@@ -121,7 +120,9 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
             + $scope.respuestas[126].resp );
         $scope.Distorsion.push(0);
         $scope.Distorsion.push($scope.Distorsion[1] - $scope.Distorsion[2]);
-        $scope.Distorsion.push($scope.Distorsion[3] + 36);
+        $scope.Distorsion.push($scope.Distorsion[3]);
+
+     $scope.Perseverancia.push($scope.Distorsion[4]);
         //Totales
         //DINAMISMO
         $scope.Dinamismo.push($scope.Dinamismo[4] + $scope.Dominancia[4]);
@@ -614,6 +615,185 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
         console.log($scope.arrayResults4);
         $scope.Cordialidad_Amabilidad.push($scope.arrayResults4.filter(obj => obj.id == $scope.Cordialidad_Amabilidad[5])[0].value);
         console.log($scope.Cordialidad_Amabilidad);
+
+     $scope.arrayResults5 = [];
+     $scope.arrayResults5.push({"id":10, "value": 27}
+         ,{"id":11, "value": 27}
+         ,{"id":12, "value": 27}
+         ,{"id":13, "value": 27}
+         ,{"id":14, "value": 27}
+         ,{"id":15, "value": 27}
+         ,{"id":16, "value": 27}
+         ,{"id":17, "value": 27}
+         ,{"id":18, "value": 27}
+         ,{"id":19, "value": 27}
+         ,{"id":20, "value": 27}
+         ,{"id":21, "value": 27}
+         ,{"id":22, "value": 27}
+         ,{"id":23, "value": 27}
+         ,{"id":24, "value": 27}
+         ,{"id":25, "value": 27}
+         ,{"id":26, "value": 27}
+         ,{"id":27, "value": 27}
+         ,{"id":28, "value": 27}
+         ,{"id":29, "value": 27}
+         ,{"id":30, "value": 27}
+         ,{"id":31, "value": 27}
+         ,{"id":32, "value": 27}
+         ,{"id":33, "value": 27}
+         ,{"id":34, "value": 27}
+         ,{"id":35, "value": 27}
+         ,{"id":36, "value": 27}
+         ,{"id":37, "value": 27}
+         ,{"id":38, "value": 27}
+         ,{"id":39, "value": 27}
+         ,{"id":40, "value": 27}
+         ,{"id":41, "value": 27}
+         ,{"id":42, "value": 27}
+         ,{"id":43, "value": 27}
+         ,{"id":44, "value": 27}
+         ,{"id":45, "value": 27}
+         ,{"id":46, "value": 27}
+         ,{"id":47, "value": 27}
+         ,{"id":48, "value": 27}
+         ,{"id":49, "value": 27}
+         ,{"id":50, "value": 27}
+         ,{"id":51, "value": 27}
+         ,{"id":52, "value": 27}
+         ,{"id":53, "value": 27}
+         ,{"id":54, "value": 27}
+         ,{"id":55, "value": 27}
+         ,{"id":56, "value": 27}
+         ,{"id":57, "value": 27}
+         ,{"id":58, "value": 27}
+         ,{"id":59, "value": 28}
+         ,{"id":60, "value": 29}
+         ,{"id":61, "value": 30}
+         ,{"id":62, "value": 31}
+         ,{"id":63, "value": 31}
+         ,{"id":64, "value": 31}
+         ,{"id":65, "value": 32}
+         ,{"id":66, "value": 33}
+         ,{"id":67, "value": 34}
+         ,{"id":68, "value": 34}
+         ,{"id":69, "value": 34}
+         ,{"id":70, "value": 37}
+         ,{"id":71, "value": 38}
+         ,{"id":72, "value": 40}
+         ,{"id":73, "value": 41}
+         ,{"id":74, "value": 42}
+         ,{"id":75, "value": 43}
+         ,{"id":76, "value": 43}
+         ,{"id":77, "value": 44}
+         ,{"id":78, "value": 45}
+         ,{"id":79, "value": 46}
+         ,{"id":80, "value": 47}
+         ,{"id":81, "value": 48}
+         ,{"id":82, "value": 49}
+         ,{"id":83, "value": 50}
+         ,{"id":84, "value": 51}
+         ,{"id":85, "value": 53}
+         ,{"id":86, "value": 54}
+         ,{"id":87, "value": 54}
+         ,{"id":88, "value": 55}
+         ,{"id":89, "value": 56}
+         ,{"id":90, "value": 56}
+         ,{"id":91, "value": 57}
+         ,{"id":92, "value": 58}
+         ,{"id":93, "value": 58}
+         ,{"id":94, "value": 58}
+         ,{"id":95, "value": 60}
+         ,{"id":96, "value": 63}
+         ,{"id":97, "value": 64}
+         ,{"id":98, "value": 65}
+         ,{"id":99, "value": 66}
+         ,{"id":100, "value": 66}
+         ,{"id":101, "value": 66}
+         ,{"id":102, "value": 68}
+         ,{"id":103, "value": 68}
+         ,{"id":104, "value": 69}
+         ,{"id":105, "value": 71}
+         ,{"id":106, "value": 72}
+         ,{"id":107, "value": 73}
+         ,{"id":108, "value": 73}
+         ,{"id":109, "value": 73}
+         ,{"id":110, "value": 73}
+         ,{"id":111, "value": 73}
+         ,{"id":112, "value": 73}
+         ,{"id":113, "value": 73}
+         ,{"id":114, "value": 75}
+         ,{"id":115, "value": 75}
+         ,{"id":116, "value": 75}
+         ,{"id":117, "value": 75}
+         ,{"id":118, "value": 75}
+         ,{"id":119, "value": 75}
+         ,{"id":120, "value": 75}
+     );
+     console.log($scope.arrayResults5);
+     $scope.Escrupulosidad.push($scope.arrayResults5.filter(obj => obj.id == $scope.Escrupulosidad[5])[0].value);
+     console.log($scope.Escrupulosidad);
+
+     $scope.arrayResults6 = [];
+     $scope.arrayResults6.push({"id":5, "value": 27}
+         ,{"id":6, "value": 27}
+         ,{"id":7, "value": 27}
+         ,{"id":8, "value": 27}
+         ,{"id":9, "value": 27}
+         ,{"id":10, "value": 27}
+         ,{"id":11, "value": 27}
+         ,{"id":12, "value": 27}
+         ,{"id":13, "value": 27}
+         ,{"id":14, "value": 27}
+         ,{"id":15, "value": 29}
+         ,{"id":16, "value": 31}
+         ,{"id":17, "value": 32}
+         ,{"id":18, "value": 34}
+         ,{"id":19, "value": 37}
+         ,{"id":20, "value": 38}
+         ,{"id":21, "value": 40}
+         ,{"id":22, "value": 42}
+         ,{"id":23, "value": 43}
+         ,{"id":24, "value": 44}
+         ,{"id":25, "value": 46}
+         ,{"id":26, "value": 47}
+         ,{"id":27, "value": 49}
+         ,{"id":28, "value": 50}
+         ,{"id":29, "value": 51}
+         ,{"id":30, "value": 53}
+         ,{"id":31, "value": 54}
+         ,{"id":32, "value": 56}
+         ,{"id":33, "value": 57}
+         ,{"id":34, "value": 58}
+         ,{"id":35, "value": 60}
+         ,{"id":36, "value": 64}
+         ,{"id":37, "value": 66}
+         ,{"id":38, "value": 66}
+         ,{"id":39, "value": 68}
+         ,{"id":40, "value": 69}
+         ,{"id":41, "value": 71}
+         ,{"id":42, "value": 72}
+         ,{"id":43, "value": 73}
+         ,{"id":44, "value": 73}
+         ,{"id":45, "value": 73}
+         ,{"id":46, "value": 73}
+         ,{"id":47, "value": 73}
+         ,{"id":48, "value": 73}
+         ,{"id":49, "value": 73}
+         ,{"id":50, "value": 74}
+         ,{"id":51, "value": 74}
+         ,{"id":52, "value": 74}
+         ,{"id":53, "value": 74}
+         ,{"id":54, "value": 74}
+         ,{"id":55, "value": 74}
+         ,{"id":56, "value": 75}
+         ,{"id":57, "value": 75}
+         ,{"id":58, "value": 75}
+         ,{"id":59, "value": 75}
+         ,{"id":60, "value": 75}
+     );
+     console.log($scope.arrayResults6);
+     $scope.Perseverancia.push($scope.arrayResults6.filter(obj => obj.id == $scope.Perseverancia[5])[0].value);
+     console.log($scope.Perseverancia);
 
 
         $scope.arrayResult = ["a","b","c","d","e","f","g","h"];
