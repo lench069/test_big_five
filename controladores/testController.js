@@ -80,6 +80,7 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
         $scope.Perseverancia.push($scope.respuestas[13].resp + $scope.respuestas[37].resp + $scope.respuestas[53].resp +
             $scope.respuestas[84].resp + $scope.respuestas[106].resp + $scope.respuestas[124].resp);
         $scope.Perseverancia.push($scope.Perseverancia[1] - $scope.Perseverancia[2]);
+        $scope.Perseverancia.push($scope.Perseverancia[3] + 36);
         //Control de emociones
         $scope.Control_de_emociones.push("Control de emociones");
         $scope.Control_de_emociones.push($scope.respuestas[7].resp + $scope.respuestas[26].resp + $scope.respuestas[49].resp +
@@ -122,7 +123,8 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
         $scope.Distorsion.push($scope.Distorsion[1] - $scope.Distorsion[2]);
         $scope.Distorsion.push($scope.Distorsion[3]);
 
-     $scope.Perseverancia.push($scope.Distorsion[4]);
+
+     $scope.Perseverancia.push($scope.Distorsion[5]);
         //Totales
         //DINAMISMO
         $scope.Dinamismo.push($scope.Dinamismo[4] + $scope.Dominancia[4]);
@@ -152,7 +154,8 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
 
         //arrayResults
         $scope.arrayResults1 = [];
-        $scope.arrayResults1.push({"id":10, "value": 27}
+        $scope.arrayResults1.push(
+             {"id":10, "value": 27}
             ,{"id":11, "value": 27}
             ,{"id":12, "value": 27}
             ,{"id":13, "value": 27}
@@ -795,26 +798,224 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
      $scope.Perseverancia.push($scope.arrayResults6.filter(obj => obj.id == $scope.Perseverancia[5])[0].value);
      console.log($scope.Perseverancia);
 
+     // BAJO MEDIO ALTO
+        $scope.arrayNivel = [];
+        $scope.arrayNivel.push(
+        {"id":0,"value":"Bajo"}
+        ,{"id":1,"value":"Bajo"}
+        ,{"id":2,"value":"Bajo"}
+        ,{"id":3,"value":"Bajo"}
+        ,{"id":4,"value":"Bajo"}
+        ,{"id":5,"value":"Bajo"}
+        ,{"id":6,"value":"Bajo"}
+        ,{"id":7,"value":"Bajo"}
+        ,{"id":8,"value":"Bajo"}
+        ,{"id":9,"value":"Bajo"}
+        ,{"id":10,"value":"Bajo"}
+        ,{"id":11,"value":"Bajo"}
+        ,{"id":12,"value":"Bajo"}
+        ,{"id":13,"value":"Bajo"}
+        ,{"id":14,"value":"Bajo"}
+        ,{"id":15,"value":"Bajo"}
+        ,{"id":16,"value":"Bajo"}
+        ,{"id":17,"value":"Bajo"}
+        ,{"id":18,"value":"Bajo"}
+        ,{"id":19,"value":"Bajo"}
+        ,{"id":20,"value":"Bajo"}
+        ,{"id":21,"value":"Bajo"}
+        ,{"id":22,"value":"Bajo"}
+        ,{"id":23,"value":"Bajo"}
+        ,{"id":24,"value":"Bajo"}
+        ,{"id":25,"value":"Bajo"}
+        ,{"id":26,"value":"Bajo"}
+        ,{"id":27,"value":"Bajo"}
+        ,{"id":28,"value":"Bajo"}
+        ,{"id":29,"value":"Bajo"}
+        ,{"id":30,"value":"Bajo"}
+        ,{"id":31,"value":"Bajo"}
+        ,{"id":32,"value":"Bajo"}
+        ,{"id":33,"value":"Bajo"}
+        ,{"id":34,"value":"Bajo"}
+        ,{"id":35,"value":"Bajo"}
+        ,{"id":36,"value":"Bajo"}
+        ,{"id":37,"value":"Bajo"}
+        ,{"id":38,"value":"Bajo"}
+        ,{"id":39,"value":"Bajo"}
+        ,{"id":40,"value":"Bajo"}
+        ,{"id":41,"value":"Bajo"}
+        ,{"id":42,"value":"Bajo"}
+        ,{"id":43,"value":"Bajo"}
+        ,{"id":44,"value":"Bajo"}
+        ,{"id":45,"value":"Promedio"}
+        ,{"id":46,"value":"Promedio"}
+        ,{"id":47,"value":"Promedio"}
+        ,{"id":48,"value":"Promedio"}
+        ,{"id":49,"value":"Promedio"}
+        ,{"id":50,"value":"Promedio"}
+        ,{"id":51,"value":"Promedio"}
+        ,{"id":52,"value":"Promedio"}
+        ,{"id":53,"value":"Promedio"}
+        ,{"id":54,"value":"Promedio"}
+        ,{"id":55,"value":"Alto"}
+        ,{"id":56,"value":"Alto"}
+        ,{"id":57,"value":"Alto"}
+        ,{"id":58,"value":"Alto"}
+        ,{"id":59,"value":"Alto"}
+        ,{"id":60,"value":"Alto"}
+        ,{"id":61,"value":"Alto"}
+        ,{"id":62,"value":"Alto"}
+        ,{"id":63,"value":"Alto"}
+        ,{"id":64,"value":"Alto"}
+        ,{"id":65,"value":"Alto"}
+        ,{"id":66,"value":"Alto"}
+        ,{"id":67,"value":"Alto"}
+        ,{"id":68,"value":"Alto"}
+        ,{"id":69,"value":"Alto"}
+        ,{"id":70,"value":"Alto"}
+        ,{"id":71,"value":"Alto"}
+        ,{"id":72,"value":"Alto"}
+        ,{"id":73,"value":"Alto"}
+        ,{"id":74,"value":"Alto"}
+        ,{"id":75,"value":"Alto"}
+        ,{"id":76,"value":"Alto"}
+        ,{"id":77,"value":"Alto"}
+        ,{"id":78,"value":"Alto"}
+        ,{"id":79,"value":"Alto"}
+        ,{"id":80,"value":"Alto"}
+        ,{"id":81,"value":"Alto"}
+        ,{"id":82,"value":"Alto"}
+        ,{"id":83,"value":"Alto"}
+        ,{"id":84,"value":"Alto"}
+        ,{"id":85,"value":"Alto"}
+        ,{"id":86,"value":"Alto"}
+        ,{"id":87,"value":"Alto"}
+        ,{"id":88,"value":"Alto"}
+        ,{"id":89,"value":"Alto"}
+        ,{"id":90,"value":"Alto"}
+        ,{"id":91,"value":"Alto"}
+        ,{"id":92,"value":"Alto"}
+        ,{"id":93,"value":"Alto"}
+        ,{"id":94,"value":"Alto"}
+        ,{"id":95,"value":"Alto"}
+        ,{"id":96,"value":"Alto"}
+        ,{"id":97,"value":"Alto"}
+        ,{"id":98,"value":"Alto"}
+        ,{"id":99,"value":"Alto"}
+        ,{"id":100,"value":"Alto"}
+        ,{"id":101,"value":"Alto"}
+        ,{"id":102,"value":"Alto"}
+        ,{"id":103,"value":"Alto"}
+        ,{"id":104,"value":"Alto"}
+        ,{"id":105,"value":"Alto"});
 
-        $scope.arrayResult = ["a","b","c","d","e","f","g","h"];
-        $scope.matriz = [$scope.arrayResult.length][$scope.arrayCaracteristicas.length];
-        $scope.matriz[0,0] = $scope.arrayCaracteristicas[0];
-        $scope.matriz [0,1] = $scope.respuestas[0].resp + $scope.respuestas[24].resp + $scope.respuestas[52].resp +
-                                 $scope.respuestas[67].resp + $scope.respuestas[93].resp + $scope.respuestas[113].resp;
+        //TEXTOS
+  $scope.textos = [];
+        $scope.textos.push(
+            {"id":1,
+            "cod": "Alto",
+            "val1": "Muy Dinámica, activa, enérgica, dominante y locuaz.",
+            "val2": "Muy cooperativa, cordial, altruista, amigable, generosa y empática.",
+            "val3": "Muy reflexiva y escrupulosa,  ordenada, diligente y perseverante.",
+            "val4": "Poco ansiosa, vulnerable, emotiva, impulsiva, impaciente e  irritable",
+            "val5": "Muy culta, informada, interesada por las cosas y experiencias nuevas, dispuesta al contacto con culturas y costumbres distintas."},
+        {"id":2,
+            "cod": "Promedio",
+            "val1": "En oportunidades algo dinámica, medianamente activa, algo sumisa y taciturna.",
+            "val2": "Medianamente  cooperativa, cordial, altruista,  amigable, generosa y  empática.",
+            "val3": "Medianamente reflexiva, escrupulosa,  ordenada,  diligente y perseverante.",
+            "val4": "Algo ansiosa, vulnerable, emotiva, impulsiva,  impaciente, e irritable",
+            "val5": "Medianamente culta, informada e interesada por las cosas y experiencias nuevas,  y algo refractaria al contacto con culturas y costumbres distintas."},
+        {"id":3,
+            "cod": "Bajo",
+            "val1": "Poco dinámica, poco activa, sumisa y taciturna.",
+            "val2": "Poco cooperativa, cordial, altruista,  amigable, generosa y  empática.",
+            "val3": "Poco reflexiva, escrupulosa,  ordenada,  diligente y perseverante.",
+            "val4": "Muy ansiosa, vulnerable, emotiva, impulsiva,  impaciente, e irritable",
+            "val5": "Poco culta, poco informada e interesada por las cosas y experiencias nuevas,  y refractaria al contacto con culturas y costumbres distintas."
+        });
+
+        console.log($scope.textos);
 
 
-       /* $scope.result = [
+        $scope.cat1 = $scope.arrayNivel.filter(obj => obj.id == $scope.Dinamismo[6])[0].value;
+        $scope.cat2 = $scope.arrayNivel.filter(obj => obj.id == $scope.Dominancia[6])[0].value;
+        $scope.cat3 = $scope.arrayNivel.filter(obj => obj.id == $scope.Cooperacion_Empatia[6])[0].value;
+        $scope.cat4 = $scope.arrayNivel.filter(obj => obj.id == $scope.Cordialidad_Amabilidad[6])[0].value;
+        $scope.cat5 = $scope.arrayNivel.filter(obj => obj.id == $scope.Escrupulosidad[6])[0].value;
+        $scope.cat6 = $scope.arrayNivel.filter(obj => obj.id == $scope.Perseverancia[6])[0].value;
+        console.log($scope.cat1,$scope.cat2,$scope.cat3,$scope.cat4,$scope.cat5,$scope.cat6);
+
+        $scope.text1 = $scope.textos.filter(obj => obj.cod == $scope.cat1)[0].val1;
+        $scope.text2 = $scope.textos.filter(obj => obj.cod == $scope.cat2)[0].val2;
+        $scope.text3 = $scope.textos.filter(obj => obj.cod == $scope.cat3)[0].val3;
+        $scope.text4 = $scope.textos.filter(obj => obj.cod == $scope.cat4)[0].val4;
+        $scope.text5 = $scope.textos.filter(obj => obj.cod == $scope.cat5)[0].val5;
+
+        console.log($scope.text1,$scope.text2,$scope.text3,$scope.text4,$scope.text5,$scope.text6);
+
+        $scope.resultado = [
             {
-                "desDimencion" : "Energía (E)",
-                "desSubEscala1" : "Dinamismo",
-                "desSubEscala2" : "Dominancia ",
-                "ptj1" :
-
-
-                }
-        ];*/
-
-        $scope.resultado = [];
+                "Dimension": "Energía (E)",
+                "Subescala1": $scope.Dinamismo[0],
+                "val1": $scope.Dinamismo[4],
+                "Subescala2": $scope.Dominancia[0],
+                "val2": $scope.Dominancia[4],
+                "total": $scope.Dinamismo[6],
+                "categoria": $scope.cat1,
+                "texto": $scope.text1
+            },
+            {
+                "Dimension": "Afabilidad (A)",
+                "Subescala1": $scope.Cooperacion_Empatia[0],
+                "val1": $scope.Cooperacion_Empatia[4],
+                "Subescala2": $scope.Cordialidad_Amabilidad[0],
+                "val2": $scope.Cordialidad_Amabilidad[4],
+                "total": $scope.Dominancia[6],
+                "categoria": $scope.cat2,
+                "texto": $scope.text2
+            },
+            {
+                "Dimension": "Tesón (T)",
+                "Subescala1": $scope.Escrupulosidad[0],
+                "val1": $scope.Escrupulosidad[4],
+                "Subescala2": $scope.Perseverancia[0],
+                "val2": $scope.Perseverancia[4],
+                "total": $scope.Cooperacion_Empatia[6],
+                "categoria": $scope.cat3,
+                "texto": $scope.text3
+            },
+            {
+                "Dimension": "Estabilidad Emocional (EE) ",
+                "Subescala1": $scope.Control_de_emociones[0],
+                "val1": $scope.Control_de_emociones[4],
+                "Subescala2": $scope.Control_de_impulsos[0],
+                "val2": $scope.Control_de_impulsos[4],
+                "total": $scope.Cordialidad_Amabilidad[6],
+                "categoria": $scope.cat4,
+                "texto": $scope.text4
+            },
+            {
+                "Dimension": "Apertura Mental (AM) ",
+                "Subescala1": $scope.Apertura_a_la_cultura[0],
+                "val1": $scope.Apertura_a_la_cultura[4],
+                "Subescala2": $scope.Apertura_a_la_experiencia[0],
+                "val2": $scope.Apertura_a_la_experiencia[4],
+                "total": $scope.Escrupulosidad[6],
+                "categoria": $scope.cat5,
+                "texto": $scope.text5
+            },
+            {
+                "Dimension": "Factor de Distorsión",
+                "Subescala1": '',
+                "val1": $scope.Distorsion[4],
+                "Subescala2": '',
+                "val2": '',
+                "total": $scope.Escrupulosidad[6],
+                "categoria": '',
+                "texto": ''
+            }
+        ];
+        console.log($scope.resultado);
 
         $scope.Esquizoide=0;
         $scope.Evitativo=0;
