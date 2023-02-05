@@ -8,13 +8,15 @@ $nombre = $_GET['nombre'];
 $cedula = $_GET['cedula'];
 $genero = $_GET['genero'];
 $edad = $_GET['edad'];
-$tiempo_enfermedad = $_GET['tiempo_enfe'];
+$ocupacion = $_GET['ocupacion'];
 $fecha = $_GET['fecha'];
+$grado = $_GET['grado'];
 
 
 
-$insertar_valores = "INSERT INTO `test`(`NICK`, `CEDULA`, `NOMBRE`, `GENERO`, `EDAD`, `TIEMPO_ENFERMEDAD`, `FECHA`)
-VALUES ('$nick','$cedula','$nombre','$genero',$edad,'$tiempo_enfermedad','$fecha')";
+$insertar_valores = "INSERT INTO `test`(`NICK`, `CEDULA`, `NOMBRE`, `GENERO`, `EDAD`, `OCUPACION`, `FECHA`, `GRADO`)
+ VALUES ('$nick','$cedula','$nombre','$genero',$edad,'$ocupacion','$fecha', '$grado')";
+
 
 		
 $retry_value = $db_connection->query($insertar_valores);
