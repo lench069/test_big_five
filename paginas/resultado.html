@@ -123,8 +123,8 @@
 
                                     <tbody style="text-align:center;">
                                     <tr class="even pointer" ng-repeat="x in resultadosTotal">
-                                        <td class=" "> {{x.Dimension}}</td>
-                                        <td class=" ">{{x.Subescala1}} <br> {{x.Subescala2}}</td>
+                                        <td class=" "> {{x.dimension}}</td>
+                                        <td class=" ">{{x.subescala1}} <br> {{x.subescala2}}</td>
                                         <td class=" ">{{x.val1}} <br> {{x.val2}}</td>
                                         <td class=" "> {{x.total}}</td>
                                         <td class=" ">{{x.categoria}}</td>
@@ -187,8 +187,8 @@
                                     </thead>
 
                                     <tbody ng-repeat="x in resultadosTotal">
-                                    <tr ng-if="(x.Dimension != 'Factor de Distorsión')">
-                                        <td class="orange"><strong>{{x.Dimension}}</strong></td>
+                                    <tr ng-if="(x.dimension != 'Factor de Distorsión')">
+                                        <td class="orange"><strong>{{x.dimension}}</strong></td>
                                         <td>
                                             {{x.texto}}
                                         </td>

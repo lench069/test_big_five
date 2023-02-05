@@ -12,13 +12,14 @@
         $total = $_GET['total'];
         $categoria = $_GET['categoria'];
         $texto = $_GET['texto'];
+        $pos = $_GET['pos'];
 
 
 
 
 
         $insertar_valores = "INSERT INTO `resultados`( `id_test`, `dimension`, `subescala1`,
-        `val1`, `subescala2`, `val2`, `total`, `categoria`, `texto`) VALUES ($id_test,'$dimension','$subescala1' ,$val1 ,'$subescala2' ,$val2 ,$total ,'$categoria' ,'$texto')";
+        `val1`, `subescala2`, `val2`, `total`, `categoria`, `texto`, `pos`) VALUES ($id_test,'$dimension','$subescala1' ,$val1 ,'$subescala2' ,$val2 ,$total ,'$categoria' ,'$texto',$pos)";
 
         echo $insertar_valores ;
 

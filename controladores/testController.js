@@ -946,7 +946,7 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
         $scope.cat3 = $scope.arrayNivel.filter(obj => obj.id == $scope.Cooperacion_Empatia[6])[0].value;
         $scope.cat4 = $scope.arrayNivel.filter(obj => obj.id == $scope.Cordialidad_Amabilidad[6])[0].value;
         $scope.cat5 = $scope.arrayNivel.filter(obj => obj.id == $scope.Escrupulosidad[6])[0].value;
-        $scope.cat6 = $scope.arrayNivel.filter(obj => obj.id == $scope.Perseverancia[6])[0].value;
+        $scope.cat6 = $scope.arrayNivel.filter(obj => obj.id == $scope.Perseverancia[7])[0].value;
         console.log($scope.cat1,$scope.cat2,$scope.cat3,$scope.cat4,$scope.cat5,$scope.cat6);
 
         $scope.text1 = $scope.textos.filter(obj => obj.cod == $scope.cat1)[0].val1;
@@ -959,63 +959,63 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
 
         $scope.resultado = [
             {
-                "Dimension": "Energía (E)",
-                "Subescala1": $scope.Dinamismo[0],
+                "dimension": "Energía (E)",
+                "subescala1": $scope.Dinamismo[0],
                 "val1": $scope.Dinamismo[4],
-                "Subescala2": $scope.Dominancia[0],
+                "subescala2": $scope.Dominancia[0],
                 "val2": $scope.Dominancia[4],
                 "total": $scope.Dinamismo[6],
                 "categoria": $scope.cat1,
                 "texto": $scope.text1
             },
             {
-                "Dimension": "Afabilidad (A)",
-                "Subescala1": $scope.Cooperacion_Empatia[0],
+                "dimension": "Afabilidad (A)",
+                "subescala1": $scope.Cooperacion_Empatia[0],
                 "val1": $scope.Cooperacion_Empatia[4],
-                "Subescala2": $scope.Cordialidad_Amabilidad[0],
+                "subescala2": $scope.Cordialidad_Amabilidad[0],
                 "val2": $scope.Cordialidad_Amabilidad[4],
                 "total": $scope.Dominancia[6],
                 "categoria": $scope.cat2,
                 "texto": $scope.text2
             },
             {
-                "Dimension": "Tesón (T)",
-                "Subescala1": $scope.Escrupulosidad[0],
+                "dimension": "Tesón (T)",
+                "subescala1": $scope.Escrupulosidad[0],
                 "val1": $scope.Escrupulosidad[4],
-                "Subescala2": $scope.Perseverancia[0],
+                "subescala2": $scope.Perseverancia[0],
                 "val2": $scope.Perseverancia[4],
                 "total": $scope.Cooperacion_Empatia[6],
                 "categoria": $scope.cat3,
                 "texto": $scope.text3
             },
             {
-                "Dimension": "Estabilidad Emocional (EE) ",
-                "Subescala1": $scope.Control_de_emociones[0],
+                "dimension": "Estabilidad Emocional (EE)",
+                "subescala1": $scope.Control_de_emociones[0],
                 "val1": $scope.Control_de_emociones[4],
-                "Subescala2": $scope.Control_de_impulsos[0],
+                "subescala2": $scope.Control_de_impulsos[0],
                 "val2": $scope.Control_de_impulsos[4],
                 "total": $scope.Cordialidad_Amabilidad[6],
                 "categoria": $scope.cat4,
                 "texto": $scope.text4
             },
             {
-                "Dimension": "Apertura Mental (AM) ",
-                "Subescala1": $scope.Apertura_a_la_cultura[0],
+                "dimension": "Apertura Mental (AM) ",
+                "subescala1": $scope.Apertura_a_la_cultura[0],
                 "val1": $scope.Apertura_a_la_cultura[4],
-                "Subescala2": $scope.Apertura_a_la_experiencia[0],
+                "subescala2": $scope.Apertura_a_la_experiencia[0],
                 "val2": $scope.Apertura_a_la_experiencia[4],
                 "total": $scope.Escrupulosidad[6],
                 "categoria": $scope.cat5,
                 "texto": $scope.text5
             },
             {
-                "Dimension": "Factor de Distorsión",
-                "Subescala1": '',
+                "dimension": "Factor de Distorsión",
+                "subescala1": '',
                 "val1": $scope.Distorsion[4],
-                "Subescala2": '',
+                "subescala2": '',
                 "val2": '',
-                "total": $scope.Escrupulosidad[6],
-                "categoria": '',
+                "total": $scope.Perseverancia[7],
+                "categoria": $scope.cat6,
                 "texto": ''
             }
         ];
@@ -1029,7 +1029,7 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
 
                 //funcion que registra los resultados.
                 //PASO4
-                $scope.registrarDatosResultado($scope.resultado[i]);
+                $scope.registrarDatosResultado($scope.resultado[i],i);
 
             }
             window.localStorage["resultadosTotal"]= JSON.stringify($scope.resultado);
@@ -1086,7 +1086,7 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
         $scope.gradoT='';
     }
 
-    $scope.registrarDatosResultado=function(data){
+    $scope.registrarDatosResultado=function(data,i){
         //console.log(data);
 
         $http({
@@ -1097,14 +1097,15 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
             },
             params: {
                 id_test:$scope.id,
-                dimension: data.Dimension,
-                subescala1:data.Subescala1,
+                dimension: data.dimension,
+                subescala1:data.subescala1,
                 val1:data.val1,
-                subescala2: data.Subescala2,
+                subescala2: data.subescala2,
                 val2: data.val2,
                 total:data.total,
                 categoria:data.categoria,
-                texto:data.texto
+                texto:data.texto,
+                pos:i
             }
         }).then(function successCallback(response) {
 
@@ -1482,8 +1483,11 @@ doc.save('sample-document.pdf');
         {
             $scope.shore = {
                 nombreT : $scope.datosTestFormTotal.NOMBRE,
-                enferT : $scope.datosTestFormTotal.TIEMPO_ENFERMEDAD,
-                edadT : $scope.datosTestFormTotal.EDAD
+                fecha : $scope.datosTestFormTotal.FECHA,
+                edadT : $scope.datosTestFormTotal.EDAD,
+                generoT : $scope.datosTestFormTotal.GENERO,
+                grado : $scope.datosTestFormTotal.GRADO,
+                ocupacion : $scope.datosTestFormTotal.OCUPACION
             }
             $scope.datosTestFormTotal = $scope.shore;
             console.log($scope.datosTestFormTotal);

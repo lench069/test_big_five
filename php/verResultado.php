@@ -7,7 +7,7 @@ require_once ("conexion.php");
 
 $idtest = $_GET['idtest'];
 
-$sql= "SELECT * FROM `resultados` WHERE `ID_TEST` = $idtest";
+$sql= "SELECT * FROM `resultados` WHERE `ID_TEST` = $idtest order by pos";
 
 $result = $db_connection->query($sql);
 
