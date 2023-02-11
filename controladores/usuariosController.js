@@ -149,8 +149,6 @@ app.controller('usuariosController', ['$scope', '$http', '$location','$localStor
             success : function(result) {
                 //si existe algun resultado
                 console.log(result);
-                console.log(true);
-                console.log('true');
                 if(result == true)
                 {
                     swal({
@@ -184,10 +182,9 @@ app.controller('usuariosController', ['$scope', '$http', '$location','$localStor
             // son pasados como argumentos a la función
             // el objeto de la petición en crudo y código de estatus de la petición
             error : function(xhr, status) {
+                swal("Error!", "Error desconocido vuelve a intentarlo!", "error");
                 console.log(xhr);
                 console.log(status);
-
-                
             },
         });
 

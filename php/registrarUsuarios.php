@@ -15,7 +15,7 @@ $insertar_valores = "INSERT INTO `usuario`(`NICK`, `COD_TIPO`, `PASWORD`, `ESTAD
 `NOMBRES`, `APELLIDOS`, `CELULAR`, `EMAIL`) VALUES ('$nick',1,'$password',1,$numPruebas,
 '$nombres','$apellidos','$celular','$email')";
 
-		
+
 $retry_value = $db_connection->query($insertar_valores);
 
    if ($retry_value) {

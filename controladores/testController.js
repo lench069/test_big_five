@@ -1013,7 +1013,7 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
                 "subescala1": '',
                 "val1": $scope.Distorsion[4],
                 "subescala2": '',
-                "val2": '',
+                "val2": 0,
                 "total": $scope.Perseverancia[7],
                 "categoria": $scope.cat6,
                 "texto": ''
@@ -1049,7 +1049,7 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
 
         $http({
             method: 'GET',
-            url: "php/buscaridTest.php",
+            url: "php/buscarIdTest.php",
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -1081,7 +1081,7 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
         $scope.cedulaT='';
         $scope.generoT='';
         $scope.edadT=18;
-        $scope.nombreT = $scope.usuarioLogin.NOMBRES + ' ' + $scope.usuarioLogin.APELLIDOS;
+        $scope.nombreT ='';
         $scope.ocupacionT='';
         $scope.gradoT='';
     }
