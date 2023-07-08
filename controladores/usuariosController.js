@@ -3,7 +3,7 @@ app.controller('usuariosController', ['$scope', '$http', '$location','$localStor
 
     $scope.initAllUsuarios=function(){
 
-       
+
 
         $http({
                 method: 'GET',
@@ -15,17 +15,17 @@ app.controller('usuariosController', ['$scope', '$http', '$location','$localStor
 
                 }
             }).then(function successCallback(response) {
-        
-                 $scope.allusuarios = response.data; 
-                 console.log($scope.allusuarios); 
- 
+
+                 $scope.allusuarios = response.data;
+                 console.log($scope.allusuarios);
+
             }, function errorCallback(response) {
 
                 swal("Error!", "Ocurrio un error!", "error");
-                            
+
 
              });
-    
+
         setTimeout(function(){
                 $('#datatableuser').DataTable({
                     "language": {
@@ -33,11 +33,11 @@ app.controller('usuariosController', ['$scope', '$http', '$location','$localStor
                     }
                 });
             }, 500);
-            
-       
 
-      
-    
+
+
+
+
     }
 
     $scope.modificarU=function(){
@@ -58,10 +58,10 @@ app.controller('usuariosController', ['$scope', '$http', '$location','$localStor
                 numPruebas:$scope.pruebas,
                 celular:$scope.celular,
                 email:$scope.email
-       
+
             }
         }).then(function successCallback(response) {
- 
+
                 console.log(response.data);
                 swal({
                     title: "Exito:",
@@ -78,17 +78,17 @@ app.controller('usuariosController', ['$scope', '$http', '$location','$localStor
                     if (isConfirm) {
                            window.location ='./principal.html';
                     } else {
-    
+
                     }
                 });
-               
+
         }, function errorCallback(response) {
 
             swal("Error!", "Ocurrio un error!", "error");
-                        
+
 
          });
-    
+
     }
 
     $scope.modificarUsuario=function(usuario){
@@ -120,15 +120,15 @@ app.controller('usuariosController', ['$scope', '$http', '$location','$localStor
     }
 
     $scope.registrarUsuarios=function(){
-        
+
 
         $.ajax({
             // la URL para la petición
             url : "php/registrarUsuarios.php",
-        
+
             // la información a enviar
             // (también es posible utilizar una cadena de datos)
-            data:{ 
+            data:{
                 nick:$scope.nick,
                 nombres:$scope.nombres,
                 apellidos:$scope.apellidos,
@@ -137,13 +137,13 @@ app.controller('usuariosController', ['$scope', '$http', '$location','$localStor
                 celular:$scope.celular,
                 email:$scope.email,
             },
-        
+
             // especifica si será una petición POST o GET
             type : 'GET',
-        
+
             // el tipo de información que se espera de respuesta
             dataType : 'json',
-        
+
             // código a ejecutar si la petición es satisfactoria;
             // la respuesta es pasada como argumento a la función
             success : function(result) {
@@ -165,19 +165,18 @@ app.controller('usuariosController', ['$scope', '$http', '$location','$localStor
                     function(isConfirm){
                         if (isConfirm) {
                             window.location ='./principal.html';
-                            
                         } else {
-        
+
                         }
                     });
-                    
+
                 }else
                 {
                     swal("Error!", "Error no se ingreso correctamente!", "error");
                 }
-                
+
             },
-        
+
             // código a ejecutar si la petición falla;
             // son pasados como argumentos a la función
             // el objeto de la petición en crudo y código de estatus de la petición
@@ -191,24 +190,23 @@ app.controller('usuariosController', ['$scope', '$http', '$location','$localStor
     }
 
 $scope.registrarU=function(){
- 
-console.log('aqui dentro');
+
             $.ajax({
                 // la URL para la petición
                 url : "php/buscarUsuario.php",
-            
+
                 // la información a enviar
                 // (también es posible utilizar una cadena de datos)
-                data:{ 
+                data:{
                     nick:$scope.nick,
                 },
-            
+
                 // especifica si será una petición POST o GET
                 type : 'GET',
-            
+
                 // el tipo de información que se espera de respuesta
                 dataType : 'json',
-            
+
                 // código a ejecutar si la petición es satisfactoria;
                 // la respuesta es pasada como argumento a la función
                 success : function(result) {
@@ -220,15 +218,15 @@ console.log('aqui dentro');
                    }else{
                     $scope.registrarUsuarios();
                    }
-                    
+
                 },
-            
+
                 // código a ejecutar si la petición falla;
                 // son pasados como argumentos a la función
                 // el objeto de la petición en crudo y código de estatus de la petición
                 error : function(xhr, status) {
-                    
-                    
+
+
                 },
             });
 

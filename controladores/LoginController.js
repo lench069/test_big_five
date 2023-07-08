@@ -13,26 +13,26 @@ app.controller('LoginController', ['$scope', '$http', '$location','$localStorage
 }
 
      $scope.login=function(){
- 
+
 
         if($scope.usuario!=undefined && $scope.usuario!=''&&$scope.password!=undefined && $scope.password!='')    {
- 
+
             $.ajax({
                 // la URL para la petición
                 url : "php/buscarUsuario.php",
-            
+
                 // la información a enviar
                 // (también es posible utilizar una cadena de datos)
-                data:{ 
+                data:{
                     nick:$scope.usuario,
                 },
-            
+
                 // especifica si será una petición POST o GET
                 type : 'GET',
-            
+
                 // el tipo de información que se espera de respuesta
                 dataType : 'json',
-            
+
                 // código a ejecutar si la petición es satisfactoria;
                 // la respuesta es pasada como argumento a la función
                 success : function(result) {
@@ -54,35 +54,35 @@ app.controller('LoginController', ['$scope', '$http', '$location','$localStorage
                              if (isConfirm) {
                                  window.location ='./index.html';
                              } else {
-             
+
                              }
                          });
-                     
+
                     }
                     //si existe algun resultado
                     if(result.length = 1)
                     {
                        //revisar que el usuario este activo
-                      
+
                             //revisar que la contraseña se enceuntre correcta
                             if(result[0].PASWORD == $scope.password)
                             {
                               //ingresa a la pantalla principal
                             window.localStorage["usuarioLogin"]= JSON.stringify(result[0]);
                              window.location ='./principal.html'
-                             
-                             
-                             
-                             
+
+
+
+
                             }else{
                             swal("Error!", "Usuario o contraseña incorrecta!", "error");
-                            
+
                             }
-                             
+
                     }
-                    
+
                 },
-            
+
                 // código a ejecutar si la petición falla;
                 // son pasados como argumentos a la función
                 // el objeto de la petición en crudo y código de estatus de la petición
@@ -102,10 +102,10 @@ app.controller('LoginController', ['$scope', '$http', '$location','$localStorage
                         if (isConfirm) {
                             window.location ='./index.html';
                         } else {
-        
+
                         }
                     });
-                    
+
                 },
             });
 
@@ -115,30 +115,30 @@ app.controller('LoginController', ['$scope', '$http', '$location','$localStorage
      };
 
      $scope.registrarUsuarios=function(){
-        
+
 console.log('registra');
         $.ajax({
             // la URL para la petición
             url : "php/registrarUsuarios.php",
-        
+
             // la información a enviar
             // (también es posible utilizar una cadena de datos)
-            data:{ 
+            data:{
                 nick:$scope.nick,
                 nombres:$scope.nombres,
                 apellidos:$scope.apellidos,
                 password:$scope.contrasena,
-                numPruebas:3,
+                numPruebas:1,
                 celular:$scope.celular,
                 email:$scope.email,
             },
-        
+
             // especifica si será una petición POST o GET
             type : 'GET',
-        
+
             // el tipo de información que se espera de respuesta
             dataType : 'json',
-        
+
             // código a ejecutar si la petición es satisfactoria;
             // la respuesta es pasada como argumento a la función
             success : function(result) {
@@ -162,19 +162,19 @@ console.log('registra');
                     function(isConfirm){
                         if (isConfirm) {
                             window.location ='./index.html';
-                            
+
                         } else {
-        
+
                         }
                     });
-                    
+
                 }else
                 {
                     swal("Error!", "Error no se ingreso correctamente!", "error");
                 }
-                
+
             },
-        
+
             // código a ejecutar si la petición falla;
             // son pasados como argumentos a la función
             // el objeto de la petición en crudo y código de estatus de la petición
@@ -182,31 +182,31 @@ console.log('registra');
                 console.log(xhr);
                 console.log(status);
 
-                
+
             },
         });
 
     };
 
 $scope.registrarU=function(){
- 
+
 console.log('aqui dentro');
             $.ajax({
                 // la URL para la petición
                 url : "php/buscarUsuario.php",
-            
+
                 // la información a enviar
                 // (también es posible utilizar una cadena de datos)
-                data:{ 
+                data:{
                     nick:$scope.nick,
                 },
-            
+
                 // especifica si será una petición POST o GET
                 type : 'GET',
-            
+
                 // el tipo de información que se espera de respuesta
                 dataType : 'json',
-            
+
                 // código a ejecutar si la petición es satisfactoria;
                 // la respuesta es pasada como argumento a la función
                 success : function(result) {
@@ -218,18 +218,18 @@ console.log('aqui dentro');
                    }else{
                     $scope.registrarUsuarios();
                    }
-                    
+
                 },
-            
+
                 // código a ejecutar si la petición falla;
                 // son pasados como argumentos a la función
                 // el objeto de la petición en crudo y código de estatus de la petición
                 error : function(xhr, status) {
-                    
-                    
+
+
                 },
             });
 
      };
- 
+
  }]);

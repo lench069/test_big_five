@@ -16,36 +16,35 @@ app.config (function($routeProvider ,$provide){
     $routeProvider.when("/modificarUsuario",{templateUrl:"paginas/modificarUsuario.html", controller:'usuariosController'});
     $routeProvider.when("/instrucciones",{templateUrl:"paginas/instruccionesTest.html", controller:'testController'});
 
-    
+
    });
 
 
-app.controller('navegacion', ['$scope', '$http', '$location','$localStorage',  
+app.controller('navegacion', ['$scope', '$http', '$location','$localStorage',
 function ($scope,$http,$location,myProvider,$localStorage) {
 
-    
+
 
     $scope.navegacion = function (url) {
         $location.path(url);
 
     }
     $scope.inicializarPage=function(){
-        
+
 
         $scope.usuarioLogin = JSON.parse(window.localStorage.getItem('usuarioLogin'))
-
-        console.log($scope.usuarioLogin.COD_TIPO);
 
         if($scope.usuarioLogin.COD_TIPO == 1 )
         {
             $scope.mostrar = false;
+            $scope.navegacion('/infotest')
         }
         if($scope.usuarioLogin.COD_TIPO == 2 )
         {
             $scope.mostrar = true;
         }
 
-      
+
     }
 
     $scope.logout=function(){

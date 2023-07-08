@@ -1078,12 +1078,16 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
         $scope.usuarioLogin = JSON.parse(window.localStorage.getItem('usuarioLogin'));
        // console.log($scope.usuarioLogin);
        $scope.nickT = $scope.usuarioLogin.NICK;
-        $scope.cedulaT='';
         $scope.generoT='';
         $scope.edadT=18;
         $scope.nombreT ='';
         $scope.ocupacionT='';
         $scope.gradoT='';
+        if($scope.usuarioLogin.COD_TIPO == 1){
+            $scope.cedulaT=$scope.usuarioLogin.NICK;
+            $scope.nombreT =$scope.usuarioLogin.NOMBRES +" "+ $scope.usuarioLogin.APELLIDOS;
+        }
+
     }
 
     $scope.registrarDatosResultado=function(data,i){
@@ -1367,13 +1371,13 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
                         $scope.navegacion ("/instrucciones");
                     }else{
                         $scope.inhabilitarUsuario();
-                        swal("Warning!", "El usuario se encuenta deshabilitado, solicite al administrador que lo active!", "warning");
+                        swal("Warning!", "El usuario llego al limite de test permitidos, solicite al administrador que habilitar el test!", "warning");
                     }
                 }
 
             }, function errorCallback(response) {
 
-                swal("Error!", "Al conultar usuario", "error");
+                swal("Error!", "Al consultar usuario", "error");
 
              });
 
