@@ -1283,6 +1283,87 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
 
     }
 
+    $scope.report=function(){
+
+        localStorage.removeItem('flag');
+
+        if($scope.usuarioLogin.COD_TIPO == 2)
+        {
+            $http({
+                method: 'GET',
+                url: "php/allTest.php",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                data: {
+
+                }
+            }).then(function successCallback(tests) {
+
+                $http({
+                    method: 'GET',
+                    url: "php/Report.php",
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    data: {
+
+                    }
+                }).then(function successCallback(response) {
+
+                    $scope.tests = tests.data;
+                    $scope.resultados = response.data;
+                    $scope.testReport = [];
+                    for(let i = 0; i < $scope.tests.length;i++ ){
+                        $scope.item = {};
+                        $scope.cont = 0;
+                        for (let j = 0; j < $scope.resultados.length;j++ ){
+                            if(($scope.tests[i].ID_TEST == $scope.resultados[j].ID_TEST)){
+                                if($scope.resultados[j].pos == "0"){
+                                    $scope.item.id_test = $scope.resultados[j].ID_TEST;
+                                    $scope.item.nick = $scope.resultados[j].NICK;
+                                    $scope.item.cedula = $scope.resultados[j].CEDULA;
+                                    $scope.item.nombre = $scope.resultados[j].NOMBRE;
+                                    $scope.item.genero = $scope.resultados[j].GENERO;
+                                    $scope.item.edad = $scope.resultados[j].EDAD;
+                                    $scope.item.fecha = $scope.resultados[j].FECHA;
+                                    $scope.item["dimencion"+$scope.cont] = $scope.resultados[j].dimension;
+                                    $scope.item["subescala1"+$scope.cont] = $scope.resultados[j].subescala1;
+                                    $scope.item["val1"+$scope.cont] = $scope.resultados[j].val1;
+                                    $scope.item["subescala2"+$scope.cont] = $scope.resultados[j].subescala2;
+                                    $scope.item["val2"+$scope.cont] = $scope.resultados[j].val2;
+                                    $scope.item["total"+$scope.cont] = $scope.resultados[j].total;
+                                    $scope.item["categoria"+$scope.cont] = $scope.resultados[j].categoria;
+                                }else{
+                                    $scope.item["dimencion"+$scope.cont] = $scope.resultados[j].dimension;
+                                    $scope.item["subescala1"+$scope.cont] = $scope.resultados[j].subescala1;
+                                    $scope.item["val1"+$scope.cont] = $scope.resultados[j].val1;
+                                    $scope.item["subescala2"+$scope.cont] = $scope.resultados[j].subescala2;
+                                    $scope.item["val2"+$scope.cont] = $scope.resultados[j].val2;
+                                    $scope.item["total"+$scope.cont] = $scope.resultados[j].total;
+                                    $scope.item["categoria"+$scope.cont] = $scope.resultados[j].categoria;
+                                }
+                                $scope.cont++;
+                            }
+                        }
+                        $scope.testReport.push($scope.item);
+                    }
+                    console.log($scope.testReport);
+                    $scope.ImprimirPDF($scope.testReport);
+
+                }, function errorCallback(response) {
+
+                    swal("Error!", "No existen registros!", "error");
+
+                });
+            }, function errorCallback(response) {
+
+                swal("Error!", "No existen registros!", "error");
+
+            });
+        }
+    }
+
 
      $scope.initPreguntas=function(){
 
@@ -1452,19 +1533,19 @@ app.controller('testController', ['$scope', '$http', '$location','$localStorage'
 
     $scope.imprimir=function(){
         var doc = new jsPDF();
-var elementHTML = $('#content').html();
-var specialElementHandlers = {
-    '#elementH': function (element, renderer) {
+        var elementHTML = $('#content').html();
+        var specialElementHandlers = {
+         '#elementH': function (element, renderer) {
         return true;
-    }
-};
-doc.fromHTML(elementHTML, 15, 15, {
+         }
+        };
+    doc.fromHTML(elementHTML, 15, 15, {
     'width': 170,
     'elementHandlers': specialElementHandlers
-});
+    });
 
-// Save the PDF
-doc.save('sample-document.pdf');
+    // Save the PDF
+    doc.save('sample-document.pdf');
     }
 
 
@@ -1533,6 +1614,161 @@ doc.save('sample-document.pdf');
               }
             })
 
+    }
+
+    $scope.ImprimirPDF=function(lista) {
+
+
+        if ((lista.length == undefined) || (lista.length == 0)) {
+            swal("Advertencia!", "No existen datos para imprimir!", "warning");
+        } else {
+
+            console.log(lista);
+
+            var fecha1 = new Date();
+            var año1 = fecha1.getFullYear();
+            var mes1 = fecha1.getMonth() + 1;
+            var dia1 = fecha1.getDate();
+            if (mes1 < 10) {
+                mes1 = '0' + mes1
+            }
+            if (dia1 < 10) {
+                dia1 = '0' + dia1
+            }
+            console.log(dia1);
+
+            var fecha_act = dia1 + '-' + mes1 + '-' + año1;
+
+
+            var doc = new jsPDF('l', 'mm', [210, 297]);
+
+            var x = 65;
+            var y = 25;
+
+            //doc.addImage(img.onload(), 'PNG', x + 25, y - 10, 15, 15);
+            doc.setFontSize(16);
+            doc.setFontType("bold");
+            doc.text("REPORTE TEST PSICOLOGICO", x + 38, y + 0);
+
+            x = 25;
+            doc.rect(x, y + 10, 247, 10, 'S')
+            doc.setFontSize(10);
+            doc.setFontType("bold");
+           doc.text(" BIG FIVE ", x + 100, y + 16);
+
+            doc.setFontSize(8);
+            doc.setFontType("bold");
+            doc.text("FECHA DE IMPRESION: ", x, y + 30);
+            doc.setFontType("normal");
+            doc.text(fecha_act, x + 33, y + 30);
+
+            // doc.rect(x, y+35, 165,220, 'S')
+
+            x = 10;
+            doc.setFontSize(5);
+            doc.setFontType("bold");
+            doc.text("Id", x + 3, y + 39);
+            doc.text("Cedula", x + 15, y + 39);
+            doc.text("Nombre", x + 45, y + 39);
+            doc.text("Genero", x + 70, y + 39);
+            doc.text("Edad", x + 85, y + 39);
+            doc.text("Fecha", x + 110, y + 39);
+            doc.text("Energía (E)", x + 136, y + 39);
+            doc.text("Afabilidad (A)", x + 155, y + 39);
+            doc.text("Tesón (T)", x + 175, y + 39);
+            doc.text("Estabilidad Emocional (EE)", x + 195, y + 39);
+            doc.text("Apertura Mental (AM) ", x + 225, y + 39);
+            doc.text("Factor de Distorsión", x + 253, y + 39);
+            doc.line(x, y + 40, x + 275, y + 40);
+            doc.line(x, y + 35, x + 275, y + 35);
+            //verticales estaticas
+            doc.line(x, y + 35, x, y + 40);
+            doc.line(x + 8, y + 35, x + 8, y + 40);
+            doc.line(x + 30, y + 35, x + 30, y + 40);
+            doc.line(x + 65, y + 35, x + 65, y + 40);
+            doc.line(x + 80, y + 35, x + 80, y + 40);
+            doc.line(x + 95, y + 35, x + 95, y + 40);
+            doc.line(x + 130, y + 35, x + 130, y + 40);
+            doc.line(x + 150, y + 35, x + 150, y + 40);
+            doc.line(x + 170, y + 35, x + 170, y + 40);
+            doc.line(x + 190, y + 35, x + 190, y + 40);
+            doc.line(x + 223, y + 35, x + 223, y + 40);
+            doc.line(x + 245, y + 35, x + 245, y + 40);
+            doc.line(x + 275, y + 35, x + 275, y + 40);
+
+            doc.setFontSize(6);
+            doc.setFontType("normal");
+            var z = 44;
+            var z = 44;
+            var num = 1;
+            var aun = 40;
+            var prueba = 300;
+            var b = 1;
+            var registros = 0;
+            var total_recaudado = 0;
+
+            for (var i = 0; i < lista.length ; i++) {
+
+
+                doc.text(lista[i].id_test, x + 2, y + z);
+                doc.text(lista[i].cedula, x + 12, y + z);
+                doc.text(lista[i].nombre, x + 32, y + z);
+                doc.text(lista[i].genero, x + 72, y + z);
+                doc.text(lista[i].edad, x + 86, y + z);
+                doc.text(lista[i].fecha, x + 102, y + z);
+                doc.text(lista[i].total0, x + 137, y + z);
+                doc.text(lista[i].total1, x + 158, y + z);
+                doc.text(lista[i].total2, x + 177, y + z);
+                doc.text(lista[i].total3, x + 204, y + z);
+                doc.text(lista[i].total4, x + 234, y + z);
+                doc.text(lista[i].total5, x + 258, y + z);
+
+                z = z + 5;
+                num = num + 1;
+                doc.line(x, y + aun + 5, x + 275, y + aun + 5)
+                aun = aun + 5;
+
+                //lineas vertivales
+                doc.line(x, y + aun - 5, x, y + aun);
+                doc.line(x + 8, y + aun - 5, x + 8, y + aun);
+                doc.line(x + 30, y + aun - 5, x + 30, y + aun);
+                doc.line(x + 65, y + aun - 5, x + 65, y + aun);
+                doc.line(x + 80, y + aun - 5, x + 80, y + aun);
+                doc.line(x + 95, y + aun - 5, x + 95, y + aun);
+                doc.line(x + 130, y + aun - 5, x + 130, y + aun);
+                doc.line(x + 150, y + aun - 5, x + 150, y + aun);
+                doc.line(x + 170, y + aun - 5, x + 170, y + aun);
+                doc.line(x + 190, y + aun - 5, x + 190, y + aun);
+                doc.line(x + 223, y + aun - 5, x + 223, y + aun);
+                doc.line(x + 245, y + aun - 5, x + 245, y + aun);
+                doc.line(x + 275, y + aun - 5, x + 275, y + aun);
+                registros = registros + 1;
+
+                if (i == 25) {
+
+                    z = -1;
+                    aun = -5;
+                    doc.addPage();
+                    doc.line(x, y + aun, x + 275, y + aun);
+                    registros = 0;
+
+                }
+                if (registros == 35) {
+                    b = b + 1;
+                    z = -1;
+                    aun = -5;
+                    doc.addPage();
+                    doc.line(x, y + aun, x + 275, y + aun);
+                    registros = 0;
+
+
+                }
+
+
+            }
+
+            doc.save('Listado.pdf');
+        }
     }
 
 }]);
